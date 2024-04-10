@@ -1,0 +1,9 @@
+Python Function:
+AES encryption
+AES decryption
+Stegno LSB->Enbedding
+Stegno LSB->debedding
+
+Flask->upload image and get message in LSB image
+Flask->Get the key for encrypted Image
+Flask->upload encrypted image  and Key and get decrypted message

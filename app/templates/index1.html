@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index1.css">
+    <title></title>
+</head>
+<body>
+
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="{{ url_for('home') }}" method="post" enctype="multipart/form-data">
+                <h1>Create Stegnography Image</h1>
+                {{ form1.csrf_token }}
+                {{form1.hidden_tag()}}
+                {{form1.file()}}
+                {{form1.message()}}
+                {{form1.submit()}}
+            </form>
+        </div>
+
+
+
+
+        <div class="form-container sign-in-container">
+            <form action="{{ url_for('home') }}" method="post" enctype="multipart/form-data">
+                <h1>Get Message From Seged Picture</h1>
+                {{ form2.csrf_token }}
+                {{form2.hidden_tag()}}
+                {{form2.file()}}
+                {{form2.key()}}
+                {{form2.Submit2()}}     
+            </form>    
+        </div>
+
+
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button class="ghost" id="embed">debedding</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <button class="ghost" id="debed">embedding</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="../static/index1.js"></script>
+</body>
+</html>
