@@ -1,0 +1,32 @@
+body {
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+.Message {
+    border: 2px solid #000000; 
+    text-align: center;
+    background: #ffffff;  
+    color: #000000; 
+    cursor: pointer; 
+    font-size: 18px; 
+    margin-top: 20px; 
+    padding: 10px 40px; 
+}
+.Download {
+    border: 2px solid #000000; 
+    text-align: center;
+    background: #ffffff;  
+    color: #000000; 
+    cursor: pointer; 
+    font-size: 18px; 
+    margin-top: 20px; 
+    padding: 10px 40px;   
+}
+

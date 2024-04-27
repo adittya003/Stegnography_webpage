@@ -15,24 +15,30 @@ def home():
     form2 = Getting_Message()
 
     if form1.validate_on_submit():
-        file = form1.file.data
-        filename = secure_filename(file.filename)
-        filename_only = filename.split(".")[0]
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
+        file1 = form1.file.data
+        filename1 = secure_filename(file1.filename)
+        filename_only1 = filename1.split(".")[0]
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename1)
+        file1.save(file_path)
         key = generate_key()
         message=form1.message.data
         enc_msg=encrypt_message(message, key)
 
-        convert_to_png(file_path, os.path.join(app.config['UPLOAD_FOLDER'], "modified" + filename_only + ".png"))
+        convert_to_png(file_path, os.path.join(app.config['UPLOAD_FOLDER'], "modified" + filename_only1 + ".png"))
 
-        new_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "modified" + filename_only + ".png")
+        new_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "modified" + filename_only1 + ".png")
 
-        output = os.path.join(app.config['UPLOAD_FOLDER'], "stg" + filename_only + ".png")
+        output = os.path.join(app.config['UPLOAD_FOLDER'], "stg" + filename_only1 + ".png")
         steg_encode(new_file_path, enc_msg.decode(), output)
-        return render_template('download.html', key=key.decode(), filename="stg" + filename_only + ".png")
+        return render_template('download.html', key=key.decode(), filename="stg" + filename_only1 + ".png")
 
-    elif form2.validate_on_submit():
+    return render_template('index1.html', form1=form1, form2=form2)
+
+
+@app.route('/validate_form2',methods=['POST'])
+def validate_form2():
+    form2 = Getting_Message()
+    if form2.validate_on_submit():
         file2 = form2.file.data
         filename2 = secure_filename(file2.filename)
         file_path2 = os.path.join(app.config['UPLOAD_FOLDER'], filename2)
@@ -41,8 +47,8 @@ def home():
         msg2 = steg_decode(file_path2) 
         decrypted_message = decrypt_message(msg2, key2.encode())
         return render_template('message.html', message2=decrypted_message)
+    return redirect(url_for('home'))
 
-    return render_template('index1.html', form1=form1, form2=form2)
 
 @app.route('/download/<filename>')
 def download_file(filename):

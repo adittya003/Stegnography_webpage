@@ -2,10 +2,13 @@
 <html>
 <head>
     <title>Download File</title>
+    <link rel="stylesheet" href="../static/index2.css">
 </head>
 <body>
-    <h1>Download File</h1>
-    <p>Your decryption key: {{ key }}</p>
-    <p>Click <a href="{{ url_for('download_file', filename=filename) }}">here</a> to download the file.</p>
+    <div class="Download">
+        <h1>Download File</h1>
+        <p>Your decryption key: {{ key }}</p>
+        <p>Click <a href="{{ url_for('download_file', filename=filename) }}">here</a> to download the file.</p>
+    </div>
 </body>
 </html>
